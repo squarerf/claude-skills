@@ -1,73 +1,42 @@
 ---
 name: frontend-design
-description: Design principles and component patterns for building polished web UIs, games, and interactive HTML/CSS/JS projects. Use when creating websites, web apps, browser games, or any frontend project.
+description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.
+license: Complete terms in LICENSE.txt
 ---
 
-# Frontend Design: Build Polished Web UIs
+This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
 
-You are creating frontend code (HTML, CSS, JavaScript). Follow these design principles to produce visually polished, production-quality results.
+The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
 
-## Design Principles
+## Design Thinking
 
-### Layout & Spacing
-- Use consistent spacing scales (4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px)
-- Add generous whitespace — don't crowd elements
-- Use CSS Grid or Flexbox for layout, never tables for layout
-- Ensure content has a max-width (960-1200px) with auto margins for readability
+Before coding, understand the context and commit to a BOLD aesthetic direction:
+- **Purpose**: What problem does this interface solve? Who uses it?
+- **Tone**: Pick an extreme: brutally minimal, maximalist chaos, retro-futuristic, organic/natural, luxury/refined, playful/toy-like, editorial/magazine, brutalist/raw, art deco/geometric, soft/pastel, industrial/utilitarian, etc. There are so many flavors to choose from. Use these for inspiration but design one that is true to the aesthetic direction.
+- **Constraints**: Technical requirements (framework, performance, accessibility).
+- **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember?
 
-### Typography
-- Use a clean sans-serif system font stack: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`
-- Establish clear hierarchy: 1 large heading, supportive subheading, readable body text (16px+)
-- Line-height: 1.5-1.7 for body, 1.1-1.3 for headings
-- Limit line length to ~65-75 characters for readability
+**CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work - the key is intentionality, not intensity.
 
-### Color
-- Start with a neutral palette (grays) and one accent color
-- Ensure WCAG AA contrast ratios (4.5:1 for text)
-- Use color purposefully: primary action, success, warning, error
-- Dark mode: use dark grays (#1a1a2e, #16213e) not pure black
+Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
+- Production-grade and functional
+- Visually striking and memorable
+- Cohesive with a clear aesthetic point-of-view
+- Meticulously refined in every detail
 
-### Components
-- Buttons: clear hierarchy (primary filled, secondary outlined, text-only for tertiary)
-- Cards: subtle borders or shadows, rounded corners (8-12px), consistent padding
-- Forms: large touch targets (44px+), clear labels, visible focus states
-- Modals: backdrop overlay, centered, max-width, close button
+## Frontend Aesthetics Guidelines
 
-### Interactions & Animation
-- Add hover states for interactive elements (subtle background change or scale)
-- Use CSS transitions (150-300ms ease) for state changes
-- Animate entrances with subtle fade-in or slide-up
-- Use `transform` and `opacity` for performant animations
+Focus on:
+- **Typography**: Choose fonts that are beautiful, unique, and interesting. Avoid generic fonts like Arial and Inter; opt instead for distinctive choices that elevate the frontend's aesthetics; unexpected, characterful font choices. Pair a distinctive display font with a refined body font.
+- **Color & Theme**: Commit to a cohesive aesthetic. Use CSS variables for consistency. Dominant colors with sharp accents outperform timid, evenly-distributed palettes.
+- **Motion**: Use animations for effects and micro-interactions. Prioritize CSS-only solutions for HTML. Use Motion library for React when available. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (animation-delay) creates more delight than scattered micro-interactions. Use scroll-triggering and hover states that surprise.
+- **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
+- **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
 
-### Responsive Design
-- Mobile-first approach: design for small screens, enhance for larger
-- Use relative units (rem, %, vw/vh) over fixed px where appropriate
-- Test breakpoints: 480px, 768px, 1024px, 1280px
-- Touch-friendly: minimum 44x44px tap targets
+NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
 
-## For Games & Interactive Projects
+Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices (Space Grotesk, for example) across generations.
 
-When building games or interactive experiences:
-- Use `<canvas>` or DOM-based rendering as appropriate for the complexity
-- Implement proper game loop with `requestAnimationFrame`
-- Handle keyboard/mouse/touch input cleanly
-- Add visual feedback for user actions (particles, screen shake, color flash)
-- Include a start screen, HUD/score display, and game over state
-- Use sprite-based or procedural graphics — avoid placeholder rectangles
-- Add sound effects where appropriate using Web Audio API
-- Target 60fps — optimize render loops
+**IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
 
-## For Single-File Projects
-
-When creating everything in one HTML file:
-- Inline CSS in `<style>` and JS in `<script>`
-- Use modern ES6+ JavaScript (no build tools needed)
-- Structure code with clear sections: styles, markup, logic
-- Result should be immediately openable in a browser
-
-## Output Guidelines
-
-- Write complete, runnable code — no placeholders or TODOs
-- Include all assets inline (SVG icons, CSS gradients for backgrounds)
-- Add a favicon using an inline SVG data URI
-- Make it immediately impressive when opened in a browser
+Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
