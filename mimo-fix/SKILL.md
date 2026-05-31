@@ -24,9 +24,15 @@ curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.xiaomimimo.com/anthr
 
 ### 2. 检查配置一致性
 
-读取两个文件，对比 API key 和模型名是否一致：
-- `~/.cc-connect/config.toml` — 找 `[[providers]]` 中 `name = "mimo-v2.5-pro"` 的配置
-- `~/.claude/settings.json` — 对比 `ANTHROPIC_AUTH_TOKEN` 和 `ANTHROPIC_MODEL`
+读取三个文件，对比模型名是否一致（注意 `[1m]` 后缀）：
+- `~/.cc-connect/config.toml` — 找 `[[providers]]` 中 `name = "mimo-v2.5-pro"` 的 `model` 字段
+- `~/.claude/settings.json` — 对比所有 `ANTHROPIC_*_MODEL` 字段
+- `~/.claude/profiles/mimopro.json` — **profile 会覆盖 settings.json，必须检查**
+
+用 grep 一次性搜索所有残留：
+```bash
+grep -rn "\[1m\]\|\[1M\]" ~/.claude/settings.json ~/.claude/profiles/ ~/.cc-connect/config.toml
+```
 
 ### 3. 检查 session 是否有旧错误
 
@@ -67,18 +73,29 @@ grep -i "issue with the selected model\|401\|Invalid API Key" ~/.cc-connect/sess
 ## 重启命令
 
 ```powershell
-# 杀进程
-taskkill /F /IM cc-connect.exe
-taskkill /F /IM node.exe
+# 杀进程（不要 kill 所有 node.exe，会误杀 MCP server）
+Stop-Process -Name cc-connect -Force
+Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match "typing-companion" } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
 
-# 清除 session（可选）
+# 清除 session（模型/配置变更时必须）
 Remove-Item ~/.cc-connect/sessions/*.json
 
-# 启动 cc-connect（后台）
-Start-Process -FilePath "D:\npm-global\node_modules\cc-connect\bin\cc-connect.exe" -WindowStyle Hidden
+# 启动 cc-connect（必须用 RedirectStandardOutput，否则日志会缓冲）
+Start-Process -FilePath "D:\npm-global\cc-connect.cmd" `
+  -ArgumentList "--config","C:\Users\Lenovo\.cc-connect\config.toml" `
+  -RedirectStandardOutput "C:\Users\Lenovo\.cc-connect\cc-connect.log" `
+  -RedirectStandardError "C:\Users\Lenovo\.cc-connect\cc-connect.err" `
+  -WindowStyle Hidden
 
-# 启动 typing-companion（后台）
-Start-Process node "D:\cc-switch\weixin-claude-bridge\typing-companion.js" -Wi Hidden
+# 等待 cc-connect 就绪
+Start-Sleep -Seconds 5
+
+# 启动 typing-companion
+Start-Process node `
+  -ArgumentList "D:\cc-switch\weixin-claude-bridge\typing-companion.js" `
+  -RedirectStandardOutput "C:\Users\Lenovo\.cc-connect\typing-companion.log" `
+  -RedirectStandardError "C:\Users\Lenovo\.cc-connect\typing-companion.err" `
+  -WindowStyle Hidden
 ```
 
 ## 配置文件位置
@@ -87,6 +104,7 @@ Start-Process node "D:\cc-switch\weixin-claude-bridge\typing-companion.js" -Wi H
 |------|------|------|
 | cc-connect 配置 | `~/.cc-connect/config.toml` | 模型、API key、平台配置 |
 | Claude Code 配置 | `~/.claude/settings.json` | 环境变量、模型名 |
+| Claude Code Profile | `~/.claude/profiles/mimopro.json` | **会覆盖 settings.json** |
 | Session 文件 | `~/.cc-connect/sessions/*.json` | 对话历史 |
 | 日志 | `~/.cc-connect/cc-connect.log` | 运行日志 |
 | typing-companion | `D:\cc-switch\weixin-claude-bridge\typing-companion.js` | 消息监控 |
