@@ -218,6 +218,47 @@ Claude Code 更新最佳方案，含完整流程和常见问题处理。
 
 ---
 
+### Python 开发
+
+#### `/python-performance-optimization` — Python 性能优化 ⭐
+
+Python 代码性能分析和优化指导。
+
+- **功能**：性能瓶颈识别、内存优化、算法复杂度分析、并发优化、Profiling 工具使用
+- **来源**：[wshobson/agents](https://github.com/wshobson/agents)（24.6K 安装）
+- **场景**：代码运行慢、内存占用高、需要优化性能时
+
+#### `/python-testing-patterns` — Python 测试模式 ⭐
+
+Python 测试最佳实践和模式。
+
+- **功能**：单元测试、集成测试、Mock 技巧、测试覆盖率、参数化测试、异步测试
+- **来源**：[wshobson/agents](https://github.com/wshobson/agents)（22.3K 安装）
+- **场景**：写测试、提高覆盖率、测试疑难代码时
+
+#### `/python-design-patterns` — Python 设计模式 ⭐
+
+Python 常用设计模式实现指南。
+
+- **功能**：创建型/结构型/行为型模式、Python 特有模式（Mixin、Context Manager、Descriptor）
+- **来源**：[wshobson/agents](https://github.com/wshobson/agents)（12.6K 安装）
+- **场景**：设计系统架构、重构代码、解决设计问题时
+
+---
+
+### 安全审计
+
+#### `/firebase-security-rules-auditor` — Firebase 安全规则审计 ⭐
+
+Firestore 安全规则的安全性评估（红队版）。
+
+- **评估维度**：Update 绕过、权限来源、业务逻辑、存储滥用、类型安全、字段级安全
+- **评分标准**：1 分（严重）到 5 分（安全），含 JSON 格式报告
+- **来源**：[firebase/agent-skills](https://github.com/firebase/agent-skills)（33.1K 安装）
+- **场景**：Firebase 安全规则更新后、安全审计时
+
+---
+
 ### 系统工具
 
 #### `/find-skills` — Skill 发现与安装
@@ -251,7 +292,7 @@ Claude Code 更新最佳方案，含完整流程和常见问题处理。
 
 ```
 ~/.claude/skills/
-├── # Anthropic 官方 Skills
+├── # Anthropic 官方 Skills (13)
 ├── docx/                    # Word 文档处理
 ├── xlsx/                    # Excel 电子表格
 ├── pptx/                    # PowerPoint 演示文稿
@@ -266,13 +307,24 @@ Claude Code 更新最佳方案，含完整流程和常见问题处理。
 ├── webapp-testing/          # Web 应用测试
 ├── skill-creator/           # 技能创建器
 │
-├── # Agentspace 图片 Skills
+├── # Agentspace 图片 Skills (4)
 ├── gpt-image-2/             # GPT 图片生成
 ├── image-edit/              # 图片编辑
 ├── image-to-video/          # 图片转视频
 ├── image-inpainting/        # 图片修复
 │
-├── # 个人 Skills
+├── # wshobson/agents Python Skills (3)
+├── python-performance-optimization/  # Python 性能优化
+├── python-testing-patterns/          # Python 测试模式
+├── python-design-patterns/           # Python 设计模式
+│
+├── # Firebase Skills (1)
+├── firebase-security-rules-auditor/  # Firebase 安全规则审计
+│
+├── # Vercel Skills (1)
+├── find-skills/             # Skill 发现
+│
+├── # 个人 Skills (11)
 ├── code-review/             # 代码审查
 ├── create-project/          # 项目脚手架
 ├── doc-writer/              # 文档生成器
@@ -282,8 +334,7 @@ Claude Code 更新最佳方案，含完整流程和常见问题处理。
 ├── typeui-fundamentals/     # UI/UX 设计原则
 ├── mimo-fix/                # MiMo 修复
 ├── claude-update/           # Claude 更新指南
-├── find-skills/             # Skill 发现
-├── start-weixin.md          # 微信桥接
+├── start-weixin/            # 微信桥接
 └── README.md                # 本文件
 ```
 
@@ -293,8 +344,11 @@ Claude Code 更新最佳方案，含完整流程和常见问题处理。
 |------|------|------|
 | [anthropics/skills](https://github.com/anthropics/skills) | 13 | Anthropic 官方 Skills |
 | [agentspace-so](https://github.com/agentspace-so) | 4 | 图片/视频处理 |
+| [wshobson/agents](https://github.com/wshobson/agents) | 3 | Python 开发最佳实践 |
+| [firebase/agent-skills](https://github.com/firebase/agent-skills) | 1 | Firebase 安全审计 |
 | [vercel-labs/skills](https://github.com/vercel-labs/skills) | 1 | Skill 发现工具 |
 | 个人开发 | 11 | 自定义 Skills |
+| **总计** | **33** | |
 
 ## 依赖
 
