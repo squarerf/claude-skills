@@ -112,6 +112,15 @@ Claude Code 更新最佳方案，含完整流程和常见问题处理。
 
 ### 系统工具
 
+#### `/find-skills` — Skill 发现与安装
+
+从开放 agent skills 生态系统中发现和安装技能。
+
+- **触发**：用户问"怎么做 X"、"找一个 X 的 skill"、"有没有能做 X 的 skill"
+- **命令**：`npx skills find [query]` 搜索、`npx skills add <package>` 安装
+- **来源**：[vercel-labs/skills](https://github.com/vercel-labs/skills)
+- **场景**：扩展能力、搜索工具和工作流
+
 #### `/skill-creator` — 技能创建器
 
 创建、修改和改进 Claude Code 自定义技能。
@@ -166,6 +175,8 @@ Claude Code 更新最佳方案，含完整流程和常见问题处理。
 │   ├── ux-principles.md
 │   ├── typography-principles.md
 │   └── accessibility.md
+├── find-skills/
+│   └── SKILL.md
 ├── start-weixin.md
 └── README.md            # 本文件
 ```
